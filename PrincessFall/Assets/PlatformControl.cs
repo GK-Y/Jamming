@@ -8,7 +8,6 @@ public class PlatformControl : MonoBehaviour
 {
     //Rigidbody2D rb;
     Transform tf;
-    bool canMove;
     public float speed;
     [SerializeField] PlayerControl plr;
 
@@ -17,28 +16,27 @@ public class PlatformControl : MonoBehaviour
 
         //rb = GetComponent<Rigidbody2D>();
         tf = GetComponent<Transform>();
-        canMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A) && canMove)
+        if (Input.GetKey(KeyCode.A))
         {
             MoveX(-1);
         }
 
-        if (Input.GetKey(KeyCode.D) && canMove)
+        if (Input.GetKey(KeyCode.D))
         {
             MoveX(+1);
         }
 
-        if (Input.GetKey(KeyCode.W) && canMove)
+        if (Input.GetKey(KeyCode.W))
         {
             MoveY(+1);
         }
 
-        if (Input.GetKey(KeyCode.S) && canMove)
+        if (Input.GetKey(KeyCode.S))
         {
             MoveY(-1);
         }
@@ -61,7 +59,7 @@ public class PlatformControl : MonoBehaviour
         if (other.gameObject.name == "Princess")
         {
             plr.enabled = true;
-            this.gameObject.GetComponent<PlatformControl>().enabled = false;
+            this.enabled = false;
         }
     }
 
@@ -69,7 +67,7 @@ public class PlatformControl : MonoBehaviour
     {
         if (other.gameObject.name == "Princess")
         {
-            this.gameObject.GetComponent<PlatformControl>().enabled = false;
+            this.enabled = false;
         }
         
     }
